@@ -2,29 +2,14 @@ import "./App.css";
 import { useEffect, useReducer } from "react";
 import { MantineProvider } from "@mantine/core";
 
-import { launches } from "../../modules/services";
+import {
+  launches,
+  type LaunchData,
+  type LaunchInterface,
+} from "../../modules/services";
 
 import { LaunchesList } from "../../pages";
 import { TitleApp } from "../../modules/UI";
-
-interface LaunchInterface {
-  mission_name: string;
-  rocket?: {
-    rocket_name?: string;
-  };
-  links?: {
-    mission_patch?: string;
-    mission_patch_small?: string;
-  };
-  details?: string;
-}
-interface LaunchData {
-  mission_name?: string;
-  rocket_name?: string;
-  mission_patch?: string;
-  mission_patch_small?: string;
-  details?: string;
-}
 
 interface launchesDataInterface {
   launchesData: LaunchData[];
@@ -71,21 +56,6 @@ export const App = () => {
       {state.launchesData.length ? (
         <LaunchesList launchesList={state.launchesData} />
       ) : (
-        // <SimpleGrid cols={3} spacing="xs" verticalSpacing="xs">
-        //   {state.launchesData.map((item) => {
-        //     return (
-        //       <Card
-        //         shadow="sm"
-        //         padding="md"
-        //         radius="md"
-        //         withBorder
-        //         key={item.mission_name}
-        //       >
-        //         {item.mission_name}
-        //       </Card>
-        //     );
-        //   })}
-        // </SimpleGrid>
         <div>Loading...</div>
       )}
     </MantineProvider>
