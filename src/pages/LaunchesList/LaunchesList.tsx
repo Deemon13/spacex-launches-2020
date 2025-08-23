@@ -1,6 +1,8 @@
-import { SimpleGrid, Card } from "@mantine/core";
+import { SimpleGrid } from "@mantine/core";
 
 import { type LaunchData } from "../../modules/services";
+
+import { LaunchCard } from "../../modules/components";
 
 import styles from "./LaunchesList.module.css";
 
@@ -17,17 +19,7 @@ export const LaunchesList = ({ launchesList }: launchesListProps) => {
       className={styles["launches-list"]}
     >
       {launchesList.map((item) => {
-        return (
-          <Card
-            shadow="sm"
-            padding="md"
-            radius="md"
-            withBorder
-            key={item.mission_name}
-          >
-            {item.mission_name}
-          </Card>
-        );
+        return <LaunchCard key={item.mission_name} item={item} />;
       })}
     </SimpleGrid>
   );

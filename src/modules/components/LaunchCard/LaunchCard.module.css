@@ -1,0 +1,46 @@
+.launch-card {
+  width: 250px;
+  padding-top: 30px;
+  min-height: 300px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.launch-card__img {
+  width: 75px;
+  height: 75px;
+  margin-bottom: 20px;
+}
+
+.launch-card__mission-name {
+  margin-top: 0;
+  margin-bottom: 10px;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 210px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.launch-card__rocket-name {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.launch-card__btn {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100%;
+  background-color: cornflowerblue;
+  color: white;
+}
+
+.launch-card__btn:hover {
+  background-color: rgb(32, 105, 241);
+}
