@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { Card } from "@mantine/core";
 
 import { type LaunchData } from "../../services";
+
+import { Modal } from "../../components";
 
 import ImageHolder from "../../../assets/image-holder.jpg";
 
@@ -8,10 +11,19 @@ import styles from "./LaunchCard.module.css";
 
 interface LaunchCardProps {
   item: LaunchData;
-  onOpen: () => void;
 }
 
-export const LaunchCard = ({ item, onOpen }: LaunchCardProps) => {
+export const LaunchCard = ({ item }: LaunchCardProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const onOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const onClose = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <Card
       shadow="sm"
@@ -39,6 +51,19 @@ export const LaunchCard = ({ item, onOpen }: LaunchCardProps) => {
       <button className={styles["launch-card__btn"]} onClick={() => onOpen()}>
         See more
       </button>
+      {isModalOpen && (
+        <Modal onClose={onClose}>
+          <img
+            src={item.mission_patch ? item.mission_patch : ImageHolder}
+            alt={item.mission_name}
+            width={150}
+            height={150}
+          />
+          <p>Mission name: {item.mission_name}</p>
+          <p>Rocket name: {item.rocket_name}</p>
+          <p>Details: {item.details}</p>
+        </Modal>
+      )}
     </Card>
   );
 };
