@@ -1,9 +1,10 @@
 import "./App.css";
 import { useEffect, useReducer } from "react";
-import { MantineProvider, SimpleGrid, Card } from "@mantine/core";
+import { MantineProvider } from "@mantine/core";
 
 import { launches } from "../../modules/services";
 
+import { LaunchesList } from "../../pages";
 import { TitleApp } from "../../modules/UI";
 
 interface LaunchInterface {
@@ -68,22 +69,23 @@ export const App = () => {
     <MantineProvider>
       <TitleApp title="SpaceX Launches 2020" />
       {state.launchesData.length ? (
-        <SimpleGrid cols={3} spacing="xs" verticalSpacing="xs">
-          {state.launchesData.map((item) => {
-            return (
-              <Card
-                shadow="sm"
-                padding="md"
-                radius="md"
-                withBorder
-                key={item.mission_name}
-              >
-                {item.mission_name}
-              </Card>
-            );
-          })}
-        </SimpleGrid>
+        <LaunchesList launchesList={state.launchesData} />
       ) : (
+        // <SimpleGrid cols={3} spacing="xs" verticalSpacing="xs">
+        //   {state.launchesData.map((item) => {
+        //     return (
+        //       <Card
+        //         shadow="sm"
+        //         padding="md"
+        //         radius="md"
+        //         withBorder
+        //         key={item.mission_name}
+        //       >
+        //         {item.mission_name}
+        //       </Card>
+        //     );
+        //   })}
+        // </SimpleGrid>
         <div>Loading...</div>
       )}
     </MantineProvider>
