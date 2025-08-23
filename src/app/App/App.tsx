@@ -9,7 +9,7 @@ import {
 } from "../../modules/services";
 
 import { LaunchesList } from "../../pages";
-import { TitleApp, Loader } from "../../modules/UI";
+import { TitleApp, LoaderComp } from "../../modules/UI";
 
 interface launchesDataInterface {
   launchesData: LaunchData[];
@@ -56,7 +56,7 @@ export const App = () => {
       {state.launchesData.length ? (
         <LaunchesList launchesList={state.launchesData} />
       ) : (
-        <Loader innerText={"Loading..."} />
+        <LoaderComp innerText={"Loading..."} />
       )}
     </MantineProvider>
   );
