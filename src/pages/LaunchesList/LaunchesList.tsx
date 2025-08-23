@@ -8,9 +8,10 @@ import styles from "./LaunchesList.module.css";
 
 interface launchesListProps {
   launchesList: LaunchData[];
+  onOpen: () => void;
 }
 
-export const LaunchesList = ({ launchesList }: launchesListProps) => {
+export const LaunchesList = ({ launchesList, onOpen }: launchesListProps) => {
   return (
     <SimpleGrid
       cols={3}
@@ -19,7 +20,9 @@ export const LaunchesList = ({ launchesList }: launchesListProps) => {
       className={styles["launches-list"]}
     >
       {launchesList.map((item) => {
-        return <LaunchCard key={item.mission_name} item={item} />;
+        return (
+          <LaunchCard key={item.mission_name} item={item} onOpen={onOpen} />
+        );
       })}
     </SimpleGrid>
   );

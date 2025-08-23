@@ -8,9 +8,10 @@ import styles from "./LaunchCard.module.css";
 
 interface LaunchCardProps {
   item: LaunchData;
+  onOpen: () => void;
 }
 
-export const LaunchCard = ({ item }: LaunchCardProps) => {
+export const LaunchCard = ({ item, onOpen }: LaunchCardProps) => {
   return (
     <Card
       shadow="sm"
@@ -35,7 +36,9 @@ export const LaunchCard = ({ item }: LaunchCardProps) => {
         <p className={styles["launch-card__rocket-name"]}>{item.rocket_name}</p>
       </div>
 
-      <button className={styles["launch-card__btn"]}>See more</button>
+      <button className={styles["launch-card__btn"]} onClick={() => onOpen()}>
+        See more
+      </button>
     </Card>
   );
 };

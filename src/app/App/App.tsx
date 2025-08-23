@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { MantineProvider } from "@mantine/core";
 
 import {
@@ -10,6 +10,7 @@ import {
 
 import { LaunchesList } from "../../pages";
 import { TitleApp, LoaderComp } from "../../modules/UI";
+import { Modal } from "../../modules/components";
 
 interface launchesDataInterface {
   launchesData: LaunchData[];
@@ -32,6 +33,7 @@ function launchesReducer(
 }
 
 export const App = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [state, dispatch] = useReducer(launchesReducer, initialState);
 
   useEffect(() => {
@@ -50,13 +52,27 @@ export const App = () => {
     });
   }, []);
 
+  const onOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const onClose = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <MantineProvider>
       <TitleApp title="SpaceX Launches 2020" />
       {state.launchesData.length ? (
-        <LaunchesList launchesList={state.launchesData} />
+        <LaunchesList launchesList={state.launchesData} onOpen={onOpen} />
       ) : (
         <LoaderComp innerText={"Loading..."} />
+      )}
+
+      {isModalOpen && (
+        <Modal onClose={onClose}>
+          <h2>Modal Title</h2>
+        </Modal>
       )}
     </MantineProvider>
   );
