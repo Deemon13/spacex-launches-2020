@@ -46,3 +46,48 @@
 .launch-card__btn:hover {
   background-color: rgb(32, 105, 241);
 }
+
+.modal__content {
+  width: 720px;
+  height: 370px;
+  overflow-y: scroll;
+  padding: 15px;
+}
+
+.modal__title {
+  margin-top: 0;
+  margin-bottom: 20px;
+
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.modal__img {
+  display: block;
+  height: auto;
+  margin: 0 auto;
+}
+
+.modal__mission-title,
+.modal__rocket-title,
+.modal__details-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.modal__mission-text,
+.modal__rocket-text,
+.modal__details-text {
+  color: rgb(116, 116, 116);
+  font-weight: 400;
+}
+
+.modal__details-title {
+  margin-bottom: 0;
+}

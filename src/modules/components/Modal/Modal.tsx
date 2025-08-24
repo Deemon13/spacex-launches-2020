@@ -29,10 +29,10 @@ export const Modal = ({ children, onClose }: ModalProps) => {
     <>
       <Overlay onClose={onClose}>
         <div className={styles.modal}>
+          {children}
           <button className={styles.close} onClick={() => onClose()}>
             X
           </button>
-          {children}
         </div>
       </Overlay>
     </>,

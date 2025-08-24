@@ -53,15 +53,34 @@ export const LaunchCard = ({ item }: LaunchCardProps) => {
       </button>
       {isModalOpen && (
         <Modal onClose={onClose}>
-          <img
-            src={item.mission_patch ? item.mission_patch : ImageHolder}
-            alt={item.mission_name}
-            width={150}
-            height={150}
-          />
-          <p>Mission name: {item.mission_name}</p>
-          <p>Rocket name: {item.rocket_name}</p>
-          <p>Details: {item.details}</p>
+          <div className={styles["modal__content"]}>
+            <h2 className={styles["modal__title"]}>{item.mission_name}</h2>
+            <img
+              src={item.mission_patch ? item.mission_patch : ImageHolder}
+              alt={item.mission_name}
+              width={150}
+              height={150}
+              className={styles["modal__img"]}
+            />
+            <p className={styles["modal__mission-title"]}>
+              Mission name:{" "}
+              <span className={styles["modal__mission-text"]}>
+                {item.mission_name}
+              </span>
+            </p>
+            <p className={styles["modal__rocket-title"]}>
+              Rocket name:{" "}
+              <span className={styles["modal__rocket-text"]}>
+                {item.rocket_name}
+              </span>
+            </p>
+            <p className={styles["modal__details-title"]}>
+              Details:{" "}
+              <span className={styles["modal__details-text"]}>
+                {item.details}
+              </span>
+            </p>
+          </div>
         </Modal>
       )}
     </Card>
