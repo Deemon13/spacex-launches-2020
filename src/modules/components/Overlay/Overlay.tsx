@@ -9,7 +9,7 @@ interface OverlayProps {
 
 export const Overlay = ({ children, onClose }: OverlayProps) => {
   return (
-    <div className={styles.overlay} onClick={() => onClose()}>
+    <div id="overlay" className={styles.overlay} onClick={() => onClose()}>
       {children}
     </div>
   );
