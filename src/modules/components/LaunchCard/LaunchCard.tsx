@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import { Card } from "@mantine/core";
 
 import { type LaunchData } from "../../services";
@@ -13,15 +13,28 @@ interface LaunchCardProps {
   item: LaunchData;
 }
 
+const initialState = { modal: false };
+
+function modalReducer(state: { modal: boolean }, action: { type: string }) {
+  switch (action.type) {
+    case "modal-isOpen":
+      return { modal: true };
+    case "modal-isClose":
+      return { modal: false };
+    default:
+      return state;
+  }
+}
+
 export const LaunchCard = ({ item }: LaunchCardProps) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [state, dispatch] = useReducer(modalReducer, initialState);
 
   const onOpen = () => {
-    setIsModalOpen(true);
+    dispatch({ type: "modal-isOpen" });
   };
 
   const onClose = () => {
-    setIsModalOpen(false);
+    dispatch({ type: "modal-isClose" });
   };
 
   return (
@@ -51,7 +64,7 @@ export const LaunchCard = ({ item }: LaunchCardProps) => {
       <button className={styles["launch-card__btn"]} onClick={() => onOpen()}>
         See more
       </button>
-      {isModalOpen && (
+      {state.modal && (
         <Modal onClose={onClose}>
           <div className={styles["modal__content"]}>
             <h2 className={styles["modal__title"]}>{item.mission_name}</h2>
