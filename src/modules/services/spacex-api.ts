@@ -6,6 +6,8 @@ const baseURL = "https://api.spacexdata.com/v3/launches";
 const queryParams = "launch_year=2020";
 
 export const launches: () => Promise<LaunchInterface[]> = async () => {
-  const launchesList = await ky.get(`${baseURL}?${queryParams}`).json<[]>();
+  const launchesList = await ky
+    .get(`${baseURL}?${queryParams}`)
+    .json<LaunchInterface[]>();
   return launchesList;
 };
