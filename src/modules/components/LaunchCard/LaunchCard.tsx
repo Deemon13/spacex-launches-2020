@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { Card } from "@mantine/core";
 
 import { type LaunchData } from "../../services";
@@ -36,6 +36,14 @@ export const LaunchCard = ({ item }: LaunchCardProps) => {
   const onClose = () => {
     dispatch({ type: "modal-isClose" });
   };
+
+  useEffect(() => {
+    if (state.modal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [state.modal]);
 
   return (
     <Card
